@@ -78,6 +78,7 @@ async def cmd_start(message: Message) -> None:
 @dp.message(F.text == "I was here")
 @dp.message(Command("i_was_here"))
 async def cmd_i_was_here(message: Message, state: FSMContext) -> None:
+    register_user(message.chat.id)
     data = load_data()
     data["last_visitor"] = {
         "full_name": message.from_user.full_name,
