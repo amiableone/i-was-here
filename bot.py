@@ -14,7 +14,9 @@ DATA_FILE = Path("data.json")
 
 def load_data() -> dict:
     if DATA_FILE.exists():
-        return json.loads(DATA_FILE.read_text())
+        data = json.loads(DATA_FILE.read_text())
+        data.setdefault("users", {})
+        return data
     return {"last_visitor": None, "users": {}}
 
 
